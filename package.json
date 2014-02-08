@@ -1,0 +1,26 @@
+{
+  "name": "icars-api",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "loopback": "~1.6.x",
+    "strong-task-emitter": "~0.0.5",
+    "rc": "~0.3.1",
+    "loopback-connector-oracle": "~1.1.1",
+    "loopback-datasource-juggler": "~1.2.13"
+  },
+  "optionalDependencies": {
+    "strong-cluster-control": "~0.1.0",
+    "strong-agent": "~0.2.15",
+    "loopback-explorer": "~1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-less": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "email": {
+    "options": {
+      "base": "Email"
+    },
+    "dataSource": "mail",
+    "public": false
+  },
+  "user": {
+    "options": {
+      "base": "User",
+      "relations": {
+        "accessTokens": {
+          "model": "accessToken",
+          "type": "hasMany",
+          "foreignKey": "userId"
+        }
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "string",
+        "id": true,
+        "generated": true
+      }
+    },
+    "dataSource": "oracleDB",
+    "public": true
+  },
+  "accessToken": {
+    "options": {
+      "base": "AccessToken",
+      "baseUrl": "access-tokens",
+      "acls": [
+        {
+          "accessType": "*",
+          "permission": "DENY",
+          "principalType": "ROLE",
+          "principalId": "$everyone"
+        },
+        {
+          "permission": "ALLOW",
+          "principalType": "ROLE",
+          "principalId": "$everyone",
+          "property": "create"
+        }
+      ]
+    },
+    "dataSource": "db",
+    "public": true
+  },
+  "dealer": {
+    "options": {
+      "relations": {
+        "reservations": {
+          "model": "reservation",
+          "type": "hasMany",
+          "foreignKey": "dealerId"
+        },
+        "rates": {
+          "model": "rate",
+          "type": "hasMany",
+          "foreignKey": "dealerId"
+        }
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "string",
+        "id": true
+      },
+      "name": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "country": {
+        "type": "string"
+      },
+      "postalzip": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      },
+      "location": {
+        "type": "geopoint"
+      },
+      "created": {
+        "type": "date"
+      },
+      "lastupdate": {
+        "type": "date"
+      }
+    },
+    "public": true,
+    "dataSource": "oracleDB",
+    "plural": "dealers"
+  },
+  "car": {
+    "options": {
+      "relations": {
+        "reservations": {
+          "model": "reservation",
+          "type": "hasMany",
+          "foreignKey": "carId"
+        }
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "string",
+        "id": true
+      },
+      "vin": {
+        "type": "string"
+      },
+      "dealerId": {
+        "type": "string"
+      },
+      "year": {
+        "type": "number"
+      },
+      "make": {
+        "type": "string"
+      },
+      "model": {
+        "type": "string"
+      },
+      "image": {
+        "type": "string"
+      },
+      "carClass": {
+        "type": "string"
+      },
+      "color": {
+        "type": "string"
+      },
+      "created": {
+        "type": "date"
+      },
+      "lastupdate": {
+        "type": "date"
+      }
+    },
+    "public": true,
+    "dataSource": "oracleDB",
+    "plural": "cars"
+  },
+  "reservation": {
+    "options": {
+      "relations": {
+        "car": {
+          "model": "car",
+          "type": "belongsTo",
+          "foreignKey": "carId"
+        },
+        "dealer": {
+          "model": "dealer",
+          "type": "belongsTo",
+          "foreignKey": "dealerId"
+        }
+
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "number",
+        "id": true,
+        "generated": true
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "dealerId": {
+        "type": "string"
+      },
+      "carId": {
+        "type": "string"
+      },
+      "fromDate": {
+        "type": "date"
+      },
+      "toDate": {
+        "type": "date"
+      }
+    },
+    "public": true,
+    "dataSource": "oracleDB",
+    "plural": "reservations"
+  },
+  "rate": {
+    "options": {
+      "relations": {
+        "dealer": {
+          "model": "dealer",
+          "type": "belongsTo",
+          "foreignKey": "dealerId"
+        }
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "dealerId": {
+        "type": "string"
+      },
+      "carClass": {
+        "type": "string"
+      },
+      "rate": {
+        "type": "number"
+      }
+    },
+    "public": true,
+    "dataSource": "oracleDB",
+    "plural": "rates"
+  }
+}

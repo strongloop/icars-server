@@ -14,5 +14,12 @@
   "mail": {
     "defaultForType": "mail",
     "connector": "mail"
+  },
+  "push": {
+    "defaultForType": "push",
+    "connector": "loopback-push-notification",
+    "installation": "installation",
+    "notification": "notification",
+    "application": "application"
   }
 }

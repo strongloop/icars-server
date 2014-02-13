@@ -298,7 +298,7 @@ function startPushServer() {
       }
     );
   }
-  postDealerNotification();
+  setTimeout(postDealerNotification,20000);
 }
 
 startPushServer();

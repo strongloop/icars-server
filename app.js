@@ -216,7 +216,7 @@ function startPushServer() {
     PushModel.notifyById(1, note, function (err) {
       if (err) {
         console.error('Cannot notify %j: %s', 1, err.stack);
-        next(err);
+       // next(err);
         return;
       }
       console.log('pushing notification to %j', 1);

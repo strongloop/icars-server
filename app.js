@@ -120,7 +120,8 @@ app.use(loopback.errorHandler());
 
 app.get('/', loopback.status());
 
-
+var PushConnector = require('PushConnector');
+var Notification = PushConnector.Notification;
 
 var badge = 1;
 app.post('/notify/:id', function (req, res, next) {

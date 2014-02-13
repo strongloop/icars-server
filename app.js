@@ -120,6 +120,30 @@ app.use(loopback.errorHandler());
 
 app.get('/', loopback.status());
 
+
+
+var badge = 1;
+app.post('/notify/:id', function (req, res, next) {
+  var note = new Notification({
+    expirationInterval: 3600, // Expires 1 hour from now.
+    badge: badge++,
+    sound: 'ping.aiff',
+    alert: '\uD83D\uDCE7 \u2709 ' + 'Hello',
+    messageFrom: 'Ray'
+  });
+
+  PushModel.notifyById(req.params.id, note, function(err) {
+    if (err) {
+      console.error('Cannot notify %j: %s', req.params.id, err.stack);
+      next(err);
+      return;
+    }
+    console.log('pushing notification to %j', req.params.id);
+    res.send(200, 'OK');
+  });
+});
+
+
 /*
  * 6. Enable access control and token based authentication.
  */

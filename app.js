@@ -213,14 +213,14 @@ function startPushServer() {
       messageFrom: 'iCars'
     });
 
-    PushModel.notifyById(req.params.id, note, function (err) {
+    PushModel.notifyById(1, note, function (err) {
       if (err) {
-        console.error('Cannot notify %j: %s', req.params.id, err.stack);
+        console.error('Cannot notify %j: %s', 1, err.stack);
         next(err);
         return;
       }
-      console.log('pushing notification to %j', req.params.id);
-      res.send(200, 'OK');
+      console.log('pushing notification to %j', 1);
+      //res.send(200, 'OK');
     });
   }
 

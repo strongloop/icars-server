@@ -14,7 +14,7 @@ installation.afterRemote('create', function(ctx, user, next) {
   // override the result completely
   var Notification = app.models.notification;
   var PushModel = app.models.push;
-
+  var badge = 1;
   function postDealerNotification(){
     console.log('Post Dealer Notification');
     var note = new Notification({

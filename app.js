@@ -203,26 +203,6 @@ function startPushServer() {
   });
 
 
-  function postDealerNotification(){
-    console.log('Post Dealer Notification');
-    var note = new Notification({
-      expirationInterval: 3600, // Expires 1 hour from now.
-      badge: badge++,
-      sound: 'ping.aiff',
-      alert: 'DEALER DISCOUNT ON NOW!!!!!!!',
-      messageFrom: 'iCars'
-    });
-
-    PushModel.notifyById(1, note, function (err) {
-      if (err) {
-        console.error('Cannot notify %j: %s', 1, err.stack);
-       // next(err);
-        return;
-      }
-      console.log('pushing notification to %j', 1);
-      //res.send(200, 'OK');
-    });
-  }
 
   PushModel.on('error', function (err) {
     console.error('Push Notification error: ', err.stack);
@@ -298,7 +278,7 @@ function startPushServer() {
       }
     );
   }
-  //setTimeout(postDealerNotification,20000);
+
 }
 
 startPushServer();

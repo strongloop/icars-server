@@ -12,16 +12,34 @@ var installation = app.models.installation;
 
 installation.afterRemote('create', function(ctx, user, next) {
   // override the result completely
+  var Notification = app.models.notification;
+  var PushModel = app.models.push;
 
+  function postDealerNotification(){
+    console.log('Post Dealer Notification');
+    var note = new Notification({
+      expirationInterval: 3600, // Expires 1 hour from now.
+      badge: badge++,
+      sound: 'ping.aiff',
+      alert: 'DEALER DISCOUNT ON NOW!!!!!!!',
+      messageFrom: 'iCars'
+    });
 
-  console.log('|');
-  console.log('|');
-  console.log('|      YAHOOOO !!!!  ');
-  console.log('|');
-  console.log('|');
+    PushModel.notifyById(1, note, function (err) {
+      if (err) {
+        console.error('Cannot notify %j: %s', 1, err.stack);
+        // next(err);
+        return;
+      }
+      console.log('pushing notification to %j', 1);
+      //res.send(200, 'OK');
+    });
+  }
+
+console.log('|---- Start the timer ');
+
+  setTimeout(postDealerNotification,20000);
   next();
-
-
 //  var result = ctx.result = {};
 //
 //

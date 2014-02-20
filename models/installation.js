@@ -21,7 +21,7 @@ installation.afterRemote('create', function(ctx, user, next) {
       expirationInterval: 3600, // Expires 1 hour from now.
       badge: badge++,
       sound: 'ping.aiff',
-      alert: 'DEALER DISCOUNT ON NOW!!!!!!!',
+      alert: 'Hot weekend rates on now',
       messageFrom: 'iCars'
     });
 

@@ -38,7 +38,7 @@ installation.afterRemote('create', function(ctx, user, next) {
 
 console.log('|---- Start the timer ');
 
-  setTimeout(postDealerNotification,5000);
+  setTimeout(postDealerNotification,14000);
   next();
 
 });

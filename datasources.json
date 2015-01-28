@@ -7,6 +7,14 @@
     "username": "bacn",
     "password": "L00pBack"
   },
+  "mysqlDB": {
+    "connector": "loopback-connector-mysql",
+    "database": "demo",
+    "host": "demo.strongloop.com",
+    "port": 3306,
+    "username": "demo",
+    "password": "L00pBack"
+  },
   "db": {
     "defaultForType": "db",
     "connector": "memory"

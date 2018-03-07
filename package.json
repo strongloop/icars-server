@@ -6,7 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "loopback": "~1.6.2",
+    "loopback": "~3.16.2",
     "strong-task-emitter": "~0.0.5",
     "rc": "~0.3.3",
     "loopback-connector-oracle": "~1.1.5",
